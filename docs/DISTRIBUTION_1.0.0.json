@@ -1,0 +1,97 @@
+{
+  "version": "1.0.0",
+  "checked_date": "2026-10-15",
+  "timezone": "Europe/Berlin",
+  "account": "playmonkeei",
+  "github": {
+    "url": "https://github.com/playmonkeei/EnhancedTimer/releases/tag/v1.0.0",
+    "status": "published",
+    "artifact_provenance": "PUBLISHED_1.0.0.json"
+  },
+  "modrinth": {
+    "project_id": "qSGup6o4",
+    "slug": "enhanced-timer",
+    "url": "https://modrinth.com/project/enhanced-timer",
+    "status": "submitted_for_review",
+    "requested_visibility": "unlisted",
+    "versions": {
+      "1.0.0+mc26.1": "PTQ4CPGD",
+      "1.0.0+mc26.2": "j7eq58FT",
+      "1.0.0+mc26.3": "z1kjCn8G",
+      "1.0.0+server": "3U9Jincp"
+    },
+    "ai_disclosure": [
+      "code",
+      "assets",
+      "text"
+    ],
+    "media": "Five actual Minecraft screenshots; lossless WebP copies verified pixel-identical. AI-authored SVG branding removed from the project icon and description banner.",
+    "visibility_reason": "Modrinth restricts primarily AI-created projects to unlisted distribution; moderation approval is pending.",
+    "policy": "https://support.modrinth.com/en/articles/16551575-disclosure-and-usage-of-ai"
+  },
+  "curseforge": {
+    "project_id": 1747004,
+    "slug": "enhanced-timer",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/enhanced-timer",
+    "status": "files_processing_pending_moderation",
+    "publish_when_approved": true,
+    "files": {
+      "26.1": 9198451,
+      "26.2": 9198428,
+      "26.3": 9198368
+    },
+    "source": "https://github.com/playmonkeei/EnhancedTimer",
+    "description": "Includes actual screenshots, AI-assistance disclosure and dependency credits."
+  },
+  "uploaded_file_checks": [
+    {
+      "platform": "modrinth",
+      "file": "enhancedtimer-server-1.0.0.jar",
+      "url": "https://cdn.modrinth.com/data/qSGup6o4/versions/3U9Jincp/enhancedtimer-server-1.0.0.jar?mr_download_reason=standalone",
+      "verified": true,
+      "sha256": "e4478557e99b473cf3f5ad251d2102727c9c77b25d60f4462d59c6c65cdb2c01"
+    },
+    {
+      "platform": "modrinth",
+      "file": "enhancedtimer-26.1-1.0.0.jar",
+      "url": "https://cdn.modrinth.com/data/qSGup6o4/versions/PTQ4CPGD/enhancedtimer-26.1-1.0.0.jar?mr_download_reason=standalone",
+      "verified": true,
+      "sha256": "c672681d62cf600a73fe5f7d4f4a6215282ffad12aea51df64e14ae64ec320d2"
+    },
+    {
+      "platform": "modrinth",
+      "file": "enhancedtimer-26.2-1.0.0.jar",
+      "url": "https://cdn.modrinth.com/data/qSGup6o4/versions/j7eq58FT/enhancedtimer-26.2-1.0.0.jar?mr_download_reason=standalone",
+      "verified": true,
+      "sha256": "62022c125578201cd83658b0206e3bcaf2bc731ce2dfbefe9191bf9328917a15"
+    },
+    {
+      "platform": "modrinth",
+      "file": "enhancedtimer-26.3-1.0.0.jar",
+      "url": "https://cdn.modrinth.com/data/qSGup6o4/versions/z1kjCn8G/enhancedtimer-26.3-1.0.0.jar?mr_download_reason=standalone",
+      "verified": true,
+      "sha256": "16a54825afb11aff19960e76c0a78ed22d702485b2f9969f73471e66371c4c0b"
+    },
+    {
+      "platform": "curseforge",
+      "file": "enhancedtimer-26.1-1.0.0.jar",
+      "url": "https://edge.forgecdn.net/files/9198/451/enhancedtimer-26.1-1.0.0.jar",
+      "verified": true,
+      "sha256": "c672681d62cf600a73fe5f7d4f4a6215282ffad12aea51df64e14ae64ec320d2"
+    },
+    {
+      "platform": "curseforge",
+      "file": "enhancedtimer-26.2-1.0.0.jar",
+      "url": "https://edge.forgecdn.net/files/9198/428/enhancedtimer-26.2-1.0.0.jar",
+      "verified": true,
+      "sha256": "62022c125578201cd83658b0206e3bcaf2bc731ce2dfbefe9191bf9328917a15"
+    },
+    {
+      "platform": "curseforge",
+      "file": "enhancedtimer-26.3-1.0.0.jar",
+      "url": "https://edge.forgecdn.net/files/9198/368/enhancedtimer-26.3-1.0.0.jar",
+      "verified": true,
+      "sha256": "16a54825afb11aff19960e76c0a78ed22d702485b2f9969f73471e66371c4c0b"
+    }
+  ]
+}

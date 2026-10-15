@@ -23,7 +23,7 @@ The game-test fixtures require a graphical Minecraft client, official server dow
 
 ## Modrinth
 
-Use one Enhanced Timer project for all loaders, with separate versions for the mod families and Bukkit/Spigot/Paper/Purpur/Folia plugin. This follows [Modrinth's recommendation](https://support.modrinth.com/en/articles/8824810-multiple-loaders-on-one-project) to keep loaders together. The project should be owned by **playmonkeei**, use the MIT license, link this repository and issue tracker, and explain which file belongs in `mods/` or `plugins/`. A project must complete Modrinth's normal submission/review process before it is publicly discoverable.
+Use one Enhanced Timer project for all loaders, with separate versions for the mod families and Bukkit/Spigot/Paper/Purpur/Folia plugin. This follows [Modrinth's recommendation](https://support.modrinth.com/en/articles/8824810-multiple-loaders-on-one-project) to keep loaders together. The project should be owned by **playmonkeei**, use the MIT license, link this repository and issue tracker, and explain which file belongs in `mods/` or `plugins/`. A project must complete Modrinth's normal submission/review process before its requested visibility takes effect. Enhanced Timer 1.0.0 was submitted as **unlisted**, with AI use in code, assets and text disclosed. Modrinth currently restricts primarily AI-created projects to unlisted distribution and prohibits AI-created branding images on project pages. The Modrinth page therefore uses actual Minecraft screenshots and does not use the SVG-generated icon or description banner. See [Modrinth's AI policy](https://support.modrinth.com/en/articles/16551575-disclosure-and-usage-of-ai).
 
 In GitHub repository Settings → Secrets and variables → Actions, configure:
 
@@ -45,6 +45,10 @@ python3 tools/publish_modrinth.py --version 1.0.0 --artifact-dir build/releases 
 
 The mod versions use `1.0.0+mc26.1`, `1.0.0+mc26.2`, and `1.0.0+mc26.3`; the plugin uses `1.0.0+server`. No duplicate build is performed for Modrinth. A failed upload is not retried automatically; rerunning verifies existing versions first.
 
-## Other distribution platforms
+## CurseForge and initial marketplace submissions
 
-Modrinth and GitHub are the initial distribution targets. CurseForge can be added for the client/server mod, and Hangar for the Paper-compatible plugin. Additional marketplaces should receive the same verified release JARs. They are not configured by the initial workflows.
+The [Enhanced Timer CurseForge project](https://www.curseforge.com/minecraft/mc-mods/enhanced-timer) belongs to **playmonkeei**, project ID `1747004`. The three Minecraft-family mod JARs were submitted with Java 25, Client and Server environments, and Fabric/Quilt/Forge/NeoForge tags. The 26.1 JAR is tagged for 26.1, 26.1.1 and 26.1.2. Files are configured to publish automatically when approved. The Bukkit plugin remains a separate download on GitHub and Modrinth.
+
+[Modrinth](https://modrinth.com/project/enhanced-timer) has four uploaded versions (project ID `qSGup6o4`), including the server plugin. Both marketplaces were awaiting moderation on 2026-10-15. [DISTRIBUTION_1.0.0.json](DISTRIBUTION_1.0.0.json) records the version/file IDs and the SHA-256 comparisons: all seven downloaded marketplace files match the GitHub release byte for byte.
+
+GitHub releases are automated. Modrinth's workflow is prepared and its project variable is configured; automatic uploads additionally require the account owner's `MODRINTH_TOKEN` repository secret. The initial marketplace uploads were performed through their owner interfaces. CurseForge publishing is currently manual; no CurseForge publishing token is configured. Further release automation can use the same immutable GitHub release files. Hangar remains an optional future target for the Paper-compatible plugin.
