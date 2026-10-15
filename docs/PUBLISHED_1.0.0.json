@@ -1,0 +1,33 @@
+{
+  "release": "https://github.com/playmonkeei/EnhancedTimer/releases/tag/v1.0.0",
+  "tag_commit": "421ea3a4cce12c00fdcfe26b8e83e5fb70d7f24e",
+  "ci": "https://github.com/playmonkeei/EnhancedTimer/actions/runs/38764628934",
+  "files": [
+    {
+      "file": "enhancedtimer-26.1-1.0.0.jar",
+      "github_sha256": "c672681d62cf600a73fe5f7d4f4a6215282ffad12aea51df64e14ae64ec320d2",
+      "local_tested_sha256": "22cf81ecac478e5347e7acbcbb10c8cf20ec34f4c7e03e42dce7f1450415fe9c",
+      "all_uncompressed_entries_identical": true
+    },
+    {
+      "file": "enhancedtimer-26.2-1.0.0.jar",
+      "github_sha256": "62022c125578201cd83658b0206e3bcaf2bc731ce2dfbefe9191bf9328917a15",
+      "local_tested_sha256": "142074819bdc1f60050f3a71332c3ffd3587d8e3b7db09cbf7e3d0d65d3fc9c7",
+      "all_uncompressed_entries_identical": true
+    },
+    {
+      "file": "enhancedtimer-26.3-1.0.0.jar",
+      "github_sha256": "16a54825afb11aff19960e76c0a78ed22d702485b2f9969f73471e66371c4c0b",
+      "local_tested_sha256": "4febcfebb9d37c77450453270b7aeeabe04996972e9dbafb4e1de2b82c29be3b",
+      "all_uncompressed_entries_identical": true
+    },
+    {
+      "file": "enhancedtimer-server-1.0.0.jar",
+      "github_sha256": "e4478557e99b473cf3f5ad251d2102727c9c77b25d60f4462d59c6c65cdb2c01",
+      "local_tested_sha256": "e4478557e99b473cf3f5ad251d2102727c9c77b25d60f4462d59c6c65cdb2c01",
+      "all_uncompressed_entries_identical": true
+    }
+  ],
+  "verified_on": "2026-10-15",
+  "scope": "GitHub Actions built the published artifacts. Every uncompressed JAR entry matches the locally game-tested build; mod archive bytes differ because of ZIP metadata. The Bukkit JAR is byte-identical. Historical test reports remain unchanged."
+}

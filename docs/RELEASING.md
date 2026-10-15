@@ -2,6 +2,8 @@
 
 Repository: https://github.com/playmonkeei/EnhancedTimer. Releases are published only under **playmonkeei**.
 
+The first public release is [1.0.0](https://github.com/playmonkeei/EnhancedTimer/releases/tag/v1.0.0), built by [GitHub Actions](https://github.com/playmonkeei/EnhancedTimer/actions/runs/38764628934). [PUBLISHED_1.0.0.json](PUBLISHED_1.0.0.json) records the published JAR hashes and their comparison with the locally game-tested builds. Historical test reports retain the hashes of the files used in those tests.
+
 ## GitHub
 
 Java 25 is required. Before a release, update `mod_version` in `gradle.properties`, add `release/<version>.md`, update the changelog and document validation against the actual JAR hashes. Keep historical test reports unchanged.
