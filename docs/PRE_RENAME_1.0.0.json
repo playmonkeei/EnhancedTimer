@@ -1,0 +1,63 @@
+{
+  "version": "1.0.0",
+  "recorded_at": "2026-10-15T12:06:33.307971+00:00",
+  "environment": "macOS ARM64, Java 25, Gradle Wrapper 9.6.0",
+  "scope": "Fresh release validation. Historical 0.2.0 loader matrix and native manual tests retain their original hashes; this is not a new complete 50-scenario matrix. Published GitHub CI assets may have different hashes; verify the SHA256SUMS attached to that release.",
+  "artifacts_sha256": {
+    "bettertimer-26.1-1.0.0.jar": "1227f9add60604cf2269cc72b457680108aed7c91fa76534e6bde59e225fe767",
+    "bettertimer-26.2-1.0.0.jar": "eef525d1353973253adb48c7b201912984ce4a859fdb4e6bf6c67bf3d080fc5b",
+    "bettertimer-26.3-1.0.0.jar": "a0992682df53edc0c071e272e598158d900ef7a764a4a5321881a9e29bada532",
+    "bettertimer-server-1.0.0.jar": "ba48557c03c6480649b2988cd21a4c0ae1587d2bb611cce9ee9bb54811dd815f"
+  },
+  "junit": {
+    "tests": 60,
+    "failures_and_errors": 0
+  },
+  "distribution_tests": {
+    "tests": 8,
+    "failures": 0
+  },
+  "compile_checks": [
+    "Minecraft 26.1.1",
+    "Minecraft 26.1.2",
+    "Spigot API 26.1.2"
+  ],
+  "archive_validation": "PASS: four archives, all loader versions, plugin version, classes, resources, embedded services and four languages × 142 keys",
+  "workflow_validation": "PASS: actionlint",
+  "runtime_checks": [
+    {
+      "minecraft": "26.1",
+      "loader": "Fabric 0.19.5",
+      "status": "PASS",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+      "mod_sha256": "1227f9add60604cf2269cc72b457680108aed7c91fa76534e6bde59e225fe767",
+      "result_file": "versions/26.1/build/run-smoke-fabric-26.1-release-1.0.0/bettertimer-smoke-result.txt",
+      "server": "Spigot 26.1.2",
+      "plugin_sha256": "ba48557c03c6480649b2988cd21a4c0ae1587d2bb611cce9ee9bb54811dd815f"
+    },
+    {
+      "minecraft": "26.2",
+      "loader": "Fabric 0.19.5",
+      "status": "PASS",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+      "mod_sha256": "eef525d1353973253adb48c7b201912984ce4a859fdb4e6bf6c67bf3d080fc5b",
+      "result_file": "versions/26.2/build/run-smoke-fabric-26.2-release-1.0.0/bettertimer-smoke-result.txt",
+      "server": "Spigot 26.2",
+      "plugin_sha256": "ba48557c03c6480649b2988cd21a4c0ae1587d2bb611cce9ee9bb54811dd815f"
+    },
+    {
+      "minecraft": "26.3",
+      "loader": "Fabric 0.19.5",
+      "status": "PASS",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+      "mod_sha256": "a0992682df53edc0c071e272e598158d900ef7a764a4a5321881a9e29bada532",
+      "result_file": "versions/26.3/build/run-smoke-fabric-26.3-release-1.0.0/bettertimer-smoke-result.txt",
+      "server": "Spigot 26.3",
+      "plugin_sha256": "ba48557c03c6480649b2988cd21a4c0ae1587d2bb611cce9ee9bb54811dd815f"
+    }
+  ],
+  "historical_reports": [
+    "COMPATIBILITY_TESTS.json",
+    "MANUAL_TESTS.json"
+  ]
+}

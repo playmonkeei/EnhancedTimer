@@ -1,0 +1,58 @@
+name: Publish GitHub release to Modrinth
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing GitHub release tag
+        required: true
+        default: v1.0.0
+        type: string
+      dry_run:
+        description: Validate and preview only (no uploads)
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: modrinth-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.repository_owner == 'playmonkeei'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ inputs.tag }}
+      - name: Verify release tag
+        env:
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: python3 tools/check_release.py
+      - name: Download published GitHub assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ inputs.tag }}
+        shell: bash
+        run: |
+          test "$(gh release view "$RELEASE_TAG" --json isDraft --jq .isDraft)" = false
+          gh release download "$RELEASE_TAG" --dir dist --pattern '*.jar' --pattern SHA256SUMS
+          (cd dist && sha256sum --check SHA256SUMS)
+      - name: Preview or publish the exact release files
+        env:
+          RELEASE_TAG: ${{ inputs.tag }}
+          DRY_RUN: ${{ inputs.dry_run }}
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+          MOD_PROJECT: ${{ vars.MODRINTH_PROJECT_ID }}
+          PLUGIN_PROJECT: ${{ vars.MODRINTH_PROJECT_ID }}
+        shell: bash
+        run: |
+          args=()
+          if [ "$DRY_RUN" = true ]; then args+=(--dry-run); fi
+          python3 tools/publish_modrinth.py --version "${RELEASE_TAG#v}" --artifact-dir dist \
+            --mod-project "$MOD_PROJECT" --plugin-project "$PLUGIN_PROJECT" "${args[@]}"

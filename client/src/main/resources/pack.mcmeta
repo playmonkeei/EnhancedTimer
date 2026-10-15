@@ -1,0 +1,10 @@
+{
+  "pack": {
+    "description": "EnhancedTimer",
+    "min_format": 84,
+    "max_format": [
+      97,
+      1
+    ]
+  }
+}

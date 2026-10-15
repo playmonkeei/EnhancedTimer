@@ -1,0 +1,22 @@
+name: EnhancedTimer
+author: playmonkeei
+website: https://github.com/playmonkeei/EnhancedTimer
+version: '${version}'
+main: dev.enhancedtimer.paper.EnhancedTimerPlugin
+api-version: '26.1'
+folia-supported: true
+description: Shared stopwatch and countdown with a bossbar and an inventory menu.
+commands:
+  ets:
+    description: Open the shared Enhanced Timer menu
+    aliases: [servertimer, enhancedtimer-server]
+    usage: /ets [start|pause|stop|reset|timer|countdown <2h>|hide|show]
+    permission: enhancedtimer.view
+permissions:
+  enhancedtimer.view:
+    description: View the shared timer and open its menu
+    default: true
+  enhancedtimer.control:
+    description: Change the shared timer for all players
+    default: op
+

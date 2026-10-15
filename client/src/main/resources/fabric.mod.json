@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "enhancedtimer",
+  "version": "${version}",
+  "name": "Enhanced Timer",
+  "authors": ["playmonkeei"],
+  "contact": {
+    "homepage": "https://github.com/playmonkeei/EnhancedTimer",
+    "sources": "https://github.com/playmonkeei/EnhancedTimer",
+    "issues": "https://github.com/playmonkeei/EnhancedTimer/issues"
+  },
+  "description": "Personal, global and team timers with a client HUD, countdowns, profiles and optional server synchronization.",
+  "license": "MIT",
+  "icon": "assets/enhancedtimer/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "modmenu": [
+      "dev.enhancedtimer.client.integration.EnhancedTimerModMenu"
+    ]
+  },
+  "suggests": {
+    "modmenu": "*"
+  },
+  "mixins": [
+    "enhancedtimer.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.0",
+    "minecraft": "${minecraftPredicate}",
+    "java": ">=25"
+  }
+}

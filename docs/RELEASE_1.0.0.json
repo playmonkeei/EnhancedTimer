@@ -1,0 +1,112 @@
+{
+  "project": "Enhanced Timer",
+  "version": "1.0.0",
+  "status": "LOCAL_PREVIEW_NOT_PUBLISHED",
+  "recorded_at": "2026-10-15T12:57:40.146431+00:00",
+  "environment": "macOS ARM64, Java 25, Gradle Wrapper 9.6.0",
+  "scope": "Fresh verification after renaming BetterTimer to Enhanced Timer. Historical 0.2.0 and pre-rename 1.0.0 reports retain their original names/hashes. These six client/server cases do not repeat the complete historical 50-case matrix or all native GUI/Hardcore/multiplayer tests.",
+  "artifacts_sha256": {
+    "enhancedtimer-26.1-1.0.0.jar": "22cf81ecac478e5347e7acbcbb10c8cf20ec34f4c7e03e42dce7f1450415fe9c",
+    "enhancedtimer-26.2-1.0.0.jar": "142074819bdc1f60050f3a71332c3ffd3587d8e3b7db09cbf7e3d0d65d3fc9c7",
+    "enhancedtimer-26.3-1.0.0.jar": "4febcfebb9d37c77450453270b7aeeabe04996972e9dbafb4e1de2b82c29be3b",
+    "enhancedtimer-server-1.0.0.jar": "e4478557e99b473cf3f5ad251d2102727c9c77b25d60f4462d59c6c65cdb2c01"
+  },
+  "junit": {
+    "tests": 60,
+    "failures_and_errors": 0
+  },
+  "distribution_tests": {
+    "tests": 8,
+    "failures": 0
+  },
+  "compile_checks": [
+    "Minecraft 26.1.1",
+    "Minecraft 26.1.2",
+    "Spigot API 26.1.2"
+  ],
+  "archive_validation": "PASS: four archives, updated IDs/versions/entrypoints, mixins, bundled icon, library relocation, service providers, four languages × 142 keys; no old namespace entries",
+  "documentation_validation": "PASS: player READMEs, technical guide, local links, anchors, SVG assets, five real F2 screenshots; browser image loading and horizontal overflow checked",
+  "workflow_validation": "PASS: actionlint",
+  "runtime_checks": [
+    {
+      "minecraft": "26.1",
+      "loader": "Fabric 0.19.5",
+      "status": "PASS",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+      "mod_sha256": "22cf81ecac478e5347e7acbcbb10c8cf20ec34f4c7e03e42dce7f1450415fe9c",
+      "result_file": "versions/26.1/build/run-smoke-fabric-26.1-enhanced-1.0.0/enhancedtimer-smoke-result.txt",
+      "server": "Spigot 26.1.2",
+      "plugin_sha256": "e4478557e99b473cf3f5ad251d2102727c9c77b25d60f4462d59c6c65cdb2c01"
+    },
+    {
+      "minecraft": "26.2",
+      "loader": "Fabric 0.19.5",
+      "status": "PASS",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+      "mod_sha256": "142074819bdc1f60050f3a71332c3ffd3587d8e3b7db09cbf7e3d0d65d3fc9c7",
+      "result_file": "versions/26.2/build/run-smoke-fabric-26.2-enhanced-1.0.0/enhancedtimer-smoke-result.txt",
+      "server": "Spigot 26.2",
+      "plugin_sha256": "e4478557e99b473cf3f5ad251d2102727c9c77b25d60f4462d59c6c65cdb2c01"
+    },
+    {
+      "minecraft": "26.3",
+      "loader": "Fabric 0.19.5",
+      "status": "PASS",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+      "mod_sha256": "4febcfebb9d37c77450453270b7aeeabe04996972e9dbafb4e1de2b82c29be3b",
+      "result_file": "versions/26.3/build/run-smoke-fabric-26.3-enhanced-1.0.0/enhancedtimer-smoke-result.txt",
+      "server": "Spigot 26.3",
+      "plugin_sha256": "e4478557e99b473cf3f5ad251d2102727c9c77b25d60f4462d59c6c65cdb2c01"
+    },
+    {
+      "minecraft": "26.3",
+      "loader": "quilt",
+      "version": "0.30.1",
+      "status": "PASS",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+      "mod_sha256": "4febcfebb9d37c77450453270b7aeeabe04996972e9dbafb4e1de2b82c29be3b",
+      "log": ".cache/enhanced-matrix/26.3/quilt-client.log"
+    },
+    {
+      "minecraft": "26.3",
+      "loader": "forge",
+      "version": "26.3-66.0.12",
+      "status": "PASS",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+      "mod_sha256": "4febcfebb9d37c77450453270b7aeeabe04996972e9dbafb4e1de2b82c29be3b",
+      "log": ".cache/enhanced-matrix/26.3/forge-client.log"
+    },
+    {
+      "minecraft": "26.3",
+      "loader": "neoforge",
+      "version": "26.3.0.83",
+      "status": "PASS",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+      "mod_sha256": "4febcfebb9d37c77450453270b7aeeabe04996972e9dbafb4e1de2b82c29be3b",
+      "log": ".cache/enhanced-matrix/26.3/neoforge-client.log"
+    }
+  ],
+  "server_commands": {
+    "server": "Spigot 26.3",
+    "status": "PASS",
+    "checks": 12,
+    "log": ".cache/enhanced-matrix/26.3/spigot-commands.log"
+  },
+  "native_capture_session": {
+    "minecraft": "26.3",
+    "loader": "Fabric 0.19.5",
+    "scope": "B opens renamed menu; /et timer and /et countdown work; scale/rainbow palette configured through native keyboard controls; editor moved with arrow keys and saved; real expiry photographed. This capture session does not add a new mouse-drag pass.",
+    "screenshots": [
+      "gameplay.png",
+      "menu.png",
+      "rainbow.png",
+      "editor.png",
+      "countdown.png"
+    ]
+  },
+  "historical_reports": [
+    "COMPATIBILITY_TESTS.json",
+    "MANUAL_TESTS.json",
+    "PRE_RENAME_1.0.0.json"
+  ]
+}

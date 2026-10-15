@@ -1,0 +1,19 @@
+# auto, de, en, fr or es. auto follows each player's Minecraft language.
+language: auto
+# Suspend the shared clock while no players are connected.
+pause-when-empty: true
+# Only affects the shared server timer. Clients keep their own HUD preferences.
+countdown-seconds: 7200
+show-bossbar: true
+# BOSSBAR or ACTIONBAR, for players without the client HUD.
+display: BOSSBAR
+warning-seconds: [60, 10, 5]
+format: '{d}d {hh}:{mm}:{ss}'
+paused-format: '{d}d {hh}:{mm}:{ss}'
+color: GOLD
+custom-color: 16755200
+
+
+finished-format: '{d}d {hh}:{mm}:{ss}'
+# TIMER, REAL or GAME
+clock: TIMER

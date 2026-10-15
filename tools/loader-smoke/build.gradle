@@ -1,0 +1,68 @@
+plugins {
+    id 'java'
+    id 'net.neoforged.moddev' version '2.0.148' apply false
+    id 'net.minecraftforge.gradle' version '7.0.17' apply false
+}
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+def selected = providers.gradleProperty('loader').getOrElse('neoforge')
+def game = providers.gradleProperty('game').getOrElse('26.3')
+def loaderVersion = providers.gradleProperty('loaderVersion').getOrElse(selected == 'forge' ? '26.3-66.0.12' : '26.3.0.83')
+def gameDir = layout.buildDirectory.dir("run-${selected}-${game}")
+def clientDir = layout.buildDirectory.dir("run-${selected}-${game}-client")
+def timerJar = providers.gradleProperty('modJar').map { file(it) }
+if (!timerJar.isPresent()) throw new GradleException('Pass -PmodJar=/absolute/path/to/enhancedtimer-26.3-1.0.0.jar')
+tasks.register('prepareSmoke', Copy) {
+    from timerJar
+    into gameDir.map { it.dir('mods') }
+}
+tasks.register('prepareClientSmoke', Sync) {
+    from timerJar
+    if (providers.gradleProperty('driverJar').isPresent()) from file(providers.gradleProperty('driverJar').get())
+    into clientDir.map { it.dir('mods') }
+}
+if (selected == 'neoforge') {
+    apply plugin: 'net.neoforged.moddev'
+    neoForge {
+        version = loaderVersion
+        runs {
+            client {
+                client(); gameDirectory = clientDir
+                if (providers.gradleProperty('joinServer').isPresent()) { programArgument '--quickPlayMultiplayer'; programArgument providers.gradleProperty('joinServer').get() }
+                if (providers.gradleProperty('driverJar').isPresent()) {
+                    systemProperty 'enhancedtimer.smoke', 'true'
+                    systemProperty 'enhancedtimer.smokeMenus', 'true'
+                    systemProperty 'enhancedtimer.smokeAddress', providers.gradleProperty('joinServer').getOrElse('127.0.0.1:25576')
+                    systemProperty 'enhancedtimer.smokePluginMenus', providers.gradleProperty('pluginSmoke').isPresent().toString()
+                }
+            }
+            server { server(); gameDirectory = gameDir; programArgument '--nogui' }
+        }
+    }
+} else if (selected == 'forge') {
+    apply plugin: 'net.minecraftforge.gradle'
+    extensions.findByType(net.minecraftforge.gradle.shadow.net.minecraftforge.gradleutils.shared.ToolsExtension).configure('slimelauncher') {
+        javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(25) }
+    }
+    repositories { minecraft.mavenizer(it); maven fg.forgeMaven; maven fg.minecraftLibsMaven; mavenCentral() }
+    dependencies { implementation minecraft.dependency("net.minecraftforge:forge:${loaderVersion}") }
+    minecraft {
+        runs {
+            register('client') {
+                workingDir = clientDir
+                if (providers.gradleProperty('joinServer').isPresent()) args '--quickPlayMultiplayer', providers.gradleProperty('joinServer').get()
+                if (providers.gradleProperty('driverJar').isPresent()) {
+                    jvmArgs '-Denhancedtimer.smoke=true', '-Denhancedtimer.smokeMenus=true',
+                            "-Denhancedtimer.smokeAddress=${providers.gradleProperty('joinServer').getOrElse('127.0.0.1:25576')}",
+                            "-Denhancedtimer.smokePluginMenus=${providers.gradleProperty('pluginSmoke').isPresent()}"
+                }
+                if (System.getProperty('os.name').toLowerCase().contains('mac')) jvmArgs '-XstartOnFirstThread'
+            }
+            register('server') { workingDir = gameDir; args '--nogui'; jvmArgs '-Dterminal.jline=false', '-Dterminal.ansi=false' }
+        }
+    }
+} else throw new GradleException('loader must be forge or neoforge')
+tasks.matching { it.name == 'runServer' }.configureEach { dependsOn 'prepareSmoke' }
+tasks.matching { it.name == 'runClient' }.configureEach { dependsOn 'prepareClientSmoke' }
+tasks.withType(JavaExec).configureEach {
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(25) }
+}

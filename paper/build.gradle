@@ -1,0 +1,23 @@
+base { archivesName = 'enhancedtimer-server' }
+repositories {
+    maven { url = 'https://repo.papermc.io/repository/maven-public/' }
+    maven { url = 'https://hub.spigotmc.org/nexus/repository/snapshots/' }
+}
+dependencies {
+    if (providers.gradleProperty('bukkitApi').getOrElse('paper') == 'spigot') {
+        compileOnly 'org.spigotmc:spigot-api:26.1.2-R0.1-SNAPSHOT'
+    } else compileOnly 'io.papermc.paper:paper-api:26.1.2.build.63-stable'
+    implementation project(':core')
+    implementation project(':richtext')
+}
+tasks.named('processResources') {
+    inputs.property 'version', project.version
+    filesMatching('plugin.yml') { expand(version: project.version) }
+}
+tasks.named('jar') {
+    from project(':core').sourceSets.main.output
+    dependsOn project(':richtext').tasks.named('shadowJar')
+    from({ zipTree(project(':richtext').tasks.named('shadowJar').get().archiveFile.get().asFile) }) { exclude 'META-INF/MANIFEST.MF' }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+

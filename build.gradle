@@ -1,0 +1,60 @@
+plugins {
+    id 'base'
+    id 'net.fabricmc.fabric-loom' version '1.17.4' apply false
+    id 'com.gradleup.shadow' version '9.6.1' apply false
+}
+allprojects {
+    group = 'dev.enhancedtimer'
+    version = rootProject.mod_version
+    repositories { mavenCentral() }
+}
+subprojects {
+    apply plugin: 'java-library'
+    java { toolchain.languageVersion = JavaLanguageVersion.of(25) }
+    tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+    tasks.withType(Jar).configureEach {
+        from rootProject.file('LICENSE')
+        preserveFileTimestamps = false
+        reproducibleFileOrder = true
+    }
+    tasks.withType(Test).configureEach { useJUnitPlatform() }
+    dependencies {
+        testImplementation platform('org.junit:junit-bom:5.13.4')
+        testImplementation 'org.junit.jupiter:junit-jupiter'
+        testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    }
+}
+tasks.named('build') { dependsOn subprojects.collect { it.tasks.named('build') } }
+tasks.register('collectJars', Sync) {
+    dependsOn subprojects.collect { it.tasks.named('build') }
+    from(subprojects.findAll { it.name != 'core' && it.name != 'richtext' }.collect { it.tasks.named('jar').flatMap { task -> task.archiveFile } })
+    into layout.buildDirectory.dir('releases')
+}
+tasks.register('releaseChecksums') {
+    dependsOn tasks.named('collectJars')
+    def target = layout.buildDirectory.file('releases/SHA256SUMS')
+    outputs.file(target)
+    inputs.files(provider { fileTree(layout.buildDirectory.dir('releases')).matching { include '*.jar' } })
+    doLast {
+        def jars = layout.buildDirectory.dir('releases').get().asFile.listFiles().findAll { it.name.endsWith('.jar') }.sort { it.name }
+        target.get().asFile.text = jars.collect { file ->
+            java.security.MessageDigest.getInstance('SHA-256').digest(file.bytes).encodeHex().toString() + '  ' + file.name
+        }.join('\n') + '\n'
+    }
+}
+tasks.register('releaseBundle', Zip) {
+    dependsOn tasks.named('releaseChecksums')
+    archiveFileName = "EnhancedTimer-${project.version}.zip"
+    destinationDirectory = layout.buildDirectory.dir('releases')
+    from(subprojects.findAll { it.name != 'core' && it.name != 'richtext' }.collect {
+        it.tasks.named('jar').flatMap { task -> task.archiveFile }
+    })
+    from(tasks.named('releaseChecksums').map { task -> task.outputs.files })
+    from('README.md', 'README.de.md', 'LICENSE', 'CHANGELOG.md')
+    from(['docs/TESTING.md', 'docs/COMPATIBILITY_TESTS.json', 'docs/MANUAL_TESTS.md', 'docs/MANUAL_TESTS.json', 'docs/RELEASING.md', 'docs/RELEASE_1.0.0.json', 'docs/PRE_RENAME_1.0.0.json', 'docs/TECHNICAL.md', 'docs/BRANDING.md']) { into 'docs' }
+    from('docs/assets') { into 'docs/assets' }
+    from("release/${project.version}.md") { into 'release' }
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+}
+

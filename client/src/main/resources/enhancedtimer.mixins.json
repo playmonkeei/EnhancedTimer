@@ -1,0 +1,29 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.enhancedtimer.client.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "MinecraftMixin",
+    "OptionsMixin",
+    "HudMixin",
+    "ChatMixin",
+    "SuggestionsMixin",
+    "ClientPayloadMixin",
+    "AdvancementsAccessor",
+    "IntegratedPauseMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+    "ClientboundCodecMixin",
+    "ServerboundCodecMixin",
+    "ServerTickMixin",
+    "ServerPayloadMixin",
+    "ServerCommandsMixin",
+    "ServerPlayerMixin",
+    "ServerAdvancementsMixin",
+    "ServerGamePayloadMixin"
+  ]
+}

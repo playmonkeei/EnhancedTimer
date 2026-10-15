@@ -1,0 +1,38 @@
+name: Bug report / Fehler melden
+description: Report a reproducible Enhanced Timer problem.
+title: '[Bug] '
+body:
+  - type: input
+    id: enhancedtimer
+    attributes:
+      label: Enhanced Timer version
+      placeholder: 1.0.0
+    validations:
+      required: true
+  - type: input
+    id: minecraft
+    attributes:
+      label: Minecraft version
+      placeholder: 26.3
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: Loader / server and version
+      placeholder: Fabric 0.19.5, Paper build 190, etc.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce / Schritte zum Nachstellen
+      description: Include expected and actual behavior. Mention other HUD mods if relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log or crash report
+      description: Remove tokens, addresses and other private information before sharing.
+      render: text

@@ -1,0 +1,22 @@
+apply plugin: 'com.gradleup.shadow'
+dependencies {
+    implementation 'net.kyori:adventure-text-minimessage:4.26.1'
+    implementation 'net.kyori:adventure-text-serializer-gson:4.26.1'
+    implementation 'net.kyori:adventure-text-serializer-legacy:4.26.1'
+}
+tasks.named('shadowJar') {
+    archiveClassifier = 'embedded'
+    relocate 'net.kyori', 'dev.enhancedtimer.vendor.kyori'
+    relocate 'com.google.gson', 'dev.enhancedtimer.vendor.gson'
+    exclude 'META-INF/*.SF', 'META-INF/*.RSA', 'META-INF/*.DSA', 'module-info.class', 'META-INF/versions/**/module-info.class'
+    mergeServiceFiles()
+    filesMatching('META-INF/services/**') { duplicatesStrategy = DuplicatesStrategy.INCLUDE }
+    project.configurations.runtimeClasspath.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        from(zipTree(artifact.file)) {
+            include '**/LICENSE*', '**/NOTICE*'
+            eachFile { path = "third-party/${artifact.name}-${artifact.moduleVersion.id.version}/${path}" }
+            includeEmptyDirs = false
+        }
+    }
+}
+tasks.named('build') { dependsOn tasks.named('shadowJar') }

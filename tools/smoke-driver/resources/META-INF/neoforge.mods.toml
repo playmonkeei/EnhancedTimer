@@ -1,0 +1,9 @@
+modLoader="lowcodefml"
+loaderVersion="[1,)"
+license="MIT"
+[[mods]]
+modId="enhancedtimer_smoke"
+version="1.0.0"
+displayName="Enhanced Timer test driver"
+[[mixins]]
+config="enhancedtimer-smoke.mixins.json"

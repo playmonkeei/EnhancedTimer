@@ -1,0 +1,183 @@
+apply plugin: 'net.fabricmc.fabric-loom'
+
+base { archivesName = "enhancedtimer-${project.name.substring(7)}" }
+def mc = project.name.substring(7)
+def modMenuVersion = ['26.1': '18.0.2', '26.2': '20.0.3', '26.3': '21.0.0'][mc]
+repositories {
+    maven { url = 'https://maven.terraformersmc.com/releases/' }
+    maven { url = 'https://maven.quiltmc.org/repository/release/' }
+}
+def compileMinecraft = mc == '26.1' ? providers.gradleProperty('minecraft261').getOrElse(mc) : mc
+def smokeRunSuffix = providers.gradleProperty('smokeRunId').map { '-' + it }.getOrElse('')
+def smokeModJar = providers.gradleProperty('smokeModJar').map { rootProject.file(it) }
+def smokeAssetIndex = "${compileMinecraft}-${['26.1': 30, '26.1.1': 30, '26.1.2': 30, '26.2': 32, '26.3': 34][compileMinecraft]}"
+if (mc == '26.1' && !(compileMinecraft in ['26.1', '26.1.1', '26.1.2'])) {
+    throw new GradleException('minecraft261 must be 26.1, 26.1.1 or 26.1.2')
+}
+sourceSets.main {
+    java.srcDir rootProject.file('client/src/main/java')
+    resources.srcDir rootProject.file('client/src/main/resources')
+}
+sourceSets.test.java.srcDir rootProject.file('client/src/test/java')
+loom {
+    runs {
+        client { client(); runDir 'run' }
+        server { server(); runDir 'run-server' }
+    }
+}
+dependencies {
+    minecraft "com.mojang:minecraft:${compileMinecraft}"
+    implementation 'net.fabricmc:fabric-loader:0.19.5'
+    implementation project(':core')
+    implementation project(':richtext')
+    compileOnly("com.terraformersmc:modmenu:${modMenuVersion}") { transitive = false }
+    if (providers.gradleProperty('withModMenu').isPresent()) {
+        runtimeOnly("com.terraformersmc:modmenu:${modMenuVersion}") { transitive = false }
+    }
+}
+tasks.named('processResources') {
+    inputs.property 'version', project.version
+    inputs.property 'minecraft', mc
+    filesMatching(['fabric.mod.json', 'META-INF/mods.toml', 'META-INF/neoforge.mods.toml']) {
+        expand(version: project.version, minecraft: mc,
+               minecraftPredicate: mc == '26.1' ? '>=26.1 <26.2' : "~${mc}",
+               minecraftRange: mc == '26.1' ? '[26.1,26.2)' : "[${mc},${mc.substring(0,3)}${Integer.parseInt(mc.substring(3)) + 1})")
+    }
+}
+tasks.named('jar') {
+    from project(':core').sourceSets.main.output
+    dependsOn project(':richtext').tasks.named('shadowJar')
+    from({ zipTree(project(':richtext').tasks.named('shadowJar').get().archiveFile.get().asFile) }) { exclude 'META-INF/MANIFEST.MF' }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest { attributes('MixinConfigs': 'enhancedtimer.mixins.json') }
+}
+tasks.named('compileJava') { options.compilerArgs += ['-proc:none'] }
+
+configure(project) {
+    sourceSets {
+        smokeDriver {
+            java.srcDir rootProject.file('tools/smoke-driver/java')
+            resources.srcDir rootProject.file('tools/smoke-driver/resources')
+            compileClasspath += sourceSets.main.compileClasspath + sourceSets.main.output
+        }
+    }
+    tasks.named('compileSmokeDriverJava') { options.compilerArgs += ['-proc:none'] }
+    tasks.register('smokeDriverJar', Jar) {
+        dependsOn tasks.named('smokeDriverClasses')
+        archiveFileName = "enhancedtimer-smoke-driver-${compileMinecraft}.jar"
+        destinationDirectory = rootProject.layout.buildDirectory.dir('test-tools')
+        from sourceSets.smokeDriver.output
+        manifest { attributes('MixinConfigs': 'enhancedtimer-smoke.mixins.json') }
+    }
+    tasks.register('runFabricSmoke', JavaExec) {
+        dependsOn tasks.named('jar'), tasks.named('smokeDriverJar'), tasks.named('downloadAssets'), tasks.named('configureLaunch')
+        mainClass = 'net.fabricmc.loader.impl.launch.knot.KnotClient'
+        def smokeDir = layout.buildDirectory.dir("run-smoke-fabric-${compileMinecraft}${smokeRunSuffix}")
+        workingDir = smokeDir.get().asFile
+        classpath = files(provider { sourceSets.main.runtimeClasspath.files.findAll { candidate ->
+            candidate.isFile() && !candidate.name.startsWith('modmenu-')
+                    && !candidate.toPath().startsWith(project(':core').layout.buildDirectory.get().asFile.toPath())
+                    && !candidate.toPath().startsWith(project(':richtext').layout.buildDirectory.get().asFile.toPath())
+        } })
+        systemProperty 'fabric.development', 'true'
+        systemProperty 'enhancedtimer.smoke', (!providers.gradleProperty('manualSmoke').isPresent()).toString()
+        systemProperty 'enhancedtimer.manualProbe', providers.gradleProperty('manualSmoke').isPresent().toString()
+        systemProperty 'enhancedtimer.smokeMenus', 'true'
+        def smokeAddress = providers.gradleProperty('smokeAddress').getOrElse('127.0.0.1:25576')
+        systemProperty 'enhancedtimer.smokeAddress', smokeAddress
+        systemProperty 'enhancedtimer.smokePluginMenus', providers.gradleProperty('pluginSmoke').isPresent().toString()
+        doFirst {
+            def mods = smokeDir.get().dir('mods').asFile; mods.mkdirs()
+            project.sync { spec -> spec.from(smokeModJar.getOrElse(tasks.named('jar').get().archiveFile.get().asFile), tasks.named('smokeDriverJar').get().archiveFile); spec.into(mods) }
+            jvmArgs tasks.named('runClient').get().jvmArgs
+            args '--version', compileMinecraft, '--username', providers.gradleProperty('smokeUsername').getOrElse('ETimerSmoke'), '--accessToken', '0', '--assetIndex', smokeAssetIndex,
+                    '--assetsDir', new File(gradle.gradleUserHomeDir, 'caches/fabric-loom/assets').absolutePath,
+                    '--width', '1280', '--height', '800'
+            if (!providers.gradleProperty('manualSmoke').isPresent() || providers.gradleProperty('manualJoin').isPresent()) args '--quickPlayMultiplayer', smokeAddress
+            if (providers.gradleProperty('withModMenu').isPresent()) project.copy { spec ->
+                spec.from(sourceSets.main.runtimeClasspath.files.findAll { it.name.startsWith('modmenu-') }); spec.into(mods)
+            }
+            if (providers.gradleProperty('exportClientSmoke').isPresent()) {
+                def output = rootProject.file(providers.gradleProperty('exportClientSmoke').get())
+                output.parentFile.mkdirs()
+                output.text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson([command: [javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(25) }.get().executablePath.asFile.absolutePath] + allJvmArgs + ['-cp', classpath.asPath, mainClass.get()] + args, workingDir: workingDir.absolutePath]))
+                throw new StopExecutionException('Client launch exported')
+            }
+        }
+    }
+}
+
+// Explicit opt-in smoke run: load the finished JAR with Quilt, without Fabric Loader on the classpath.
+if (providers.gradleProperty('quiltSmoke').isPresent()) {
+    configurations { quiltSmokeLoader }
+    dependencies {
+        quiltSmokeLoader 'org.quiltmc:quilt-loader:0.30.1'
+        quiltSmokeLoader 'org.quiltmc:quilt-json5:1.0.4+final'
+        quiltSmokeLoader 'org.quiltmc:quilt-config:1.3.3'
+        quiltSmokeLoader 'net.fabricmc:sponge-mixin:0.17.3+mixin.0.8.7'
+        quiltSmokeLoader 'org.ow2.asm:asm:9.10.1'
+        quiltSmokeLoader 'org.ow2.asm:asm-analysis:9.10.1'
+        quiltSmokeLoader 'org.ow2.asm:asm-commons:9.10.1'
+        quiltSmokeLoader 'org.ow2.asm:asm-tree:9.10.1'
+        quiltSmokeLoader 'org.ow2.asm:asm-util:9.10.1'
+    }
+    tasks.register('runQuiltClient', JavaExec) {
+        dependsOn tasks.named('jar'), tasks.named('smokeDriverJar'), tasks.named('downloadAssets'), tasks.named('configureLaunch')
+        mainClass = 'org.quiltmc.loader.impl.launch.knot.KnotClient'
+        def runDirectory = layout.buildDirectory.dir("run-quilt-${compileMinecraft}${smokeRunSuffix}")
+        workingDir = runDirectory.get().asFile
+        classpath = files(provider { sourceSets.main.runtimeClasspath.files.findAll { candidate ->
+            candidate.isFile() && !['fabric-loader-', 'modmenu-', 'sponge-mixin-', 'asm-', 'mixinextras-'].any { candidate.name.startsWith(it) }
+        } }) + configurations.quiltSmokeLoader
+        systemProperty 'fabric.development', 'true'
+        systemProperty 'quilt.development', 'true'
+        systemProperty 'enhancedtimer.smoke', 'true'
+        systemProperty 'enhancedtimer.smokeMenus', 'true'
+        def smokeAddress = providers.gradleProperty('smokeAddress').getOrElse('127.0.0.1:25576')
+        systemProperty 'enhancedtimer.smokeAddress', smokeAddress
+        systemProperty 'enhancedtimer.smokePluginMenus', providers.gradleProperty('pluginSmoke').isPresent().toString()
+        doFirst {
+            def mods = runDirectory.get().dir('mods').asFile; mods.mkdirs()
+            project.sync { spec -> spec.from(smokeModJar.getOrElse(tasks.named('jar').get().archiveFile.get().asFile), tasks.named('smokeDriverJar').get().archiveFile); spec.into(mods) }
+            // Reuse Loom's resolved native directory and launcher arguments.
+            jvmArgs tasks.named('runClient').get().jvmArgs
+            args '--version', compileMinecraft, '--username', 'ETimerSmoke', '--accessToken', '0', '--assetIndex', smokeAssetIndex,
+                    '--assetsDir', new File(gradle.gradleUserHomeDir, 'caches/fabric-loom/assets').absolutePath,
+                    '--quickPlayMultiplayer', smokeAddress
+        }
+    }
+}
+
+
+// Dedicated-server runs load the same distributable JAR, without the client test driver.
+['fabric', 'quilt'].each { smokeLoader ->
+    if (smokeLoader == 'fabric' || providers.gradleProperty('quiltSmoke').isPresent()) {
+        tasks.register(smokeLoader == 'fabric' ? 'runFabricServerSmoke' : 'runQuiltServerSmoke', JavaExec) {
+            dependsOn tasks.named('jar'), tasks.named('configureLaunch')
+            mainClass = smokeLoader == 'fabric' ? 'net.fabricmc.loader.impl.launch.knot.KnotServer' : 'org.quiltmc.loader.impl.launch.knot.KnotServer'
+            def runDirectory = layout.buildDirectory.dir("run-${smokeLoader}-${compileMinecraft}-server")
+            workingDir = runDirectory.get().asFile
+            classpath = files(provider { sourceSets.main.runtimeClasspath.files.findAll { candidate ->
+                candidate.isFile() && !candidate.name.startsWith('modmenu-')
+                        && (smokeLoader == 'fabric' || !['fabric-loader-', 'sponge-mixin-', 'asm-', 'mixinextras-'].any { candidate.name.startsWith(it) })
+                        && !candidate.toPath().startsWith(project(':core').layout.buildDirectory.get().asFile.toPath())
+                        && !candidate.toPath().startsWith(project(':richtext').layout.buildDirectory.get().asFile.toPath())
+            } })
+            if (smokeLoader == 'quilt') classpath += configurations.quiltSmokeLoader
+            systemProperty 'fabric.development', 'true'
+            if (smokeLoader == 'quilt') systemProperty 'quilt.development', 'true'
+            jvmArgs '-Xmx1500M', '-Dterminal.jline=false', '-Dterminal.ansi=false'
+            args '--nogui'
+            doFirst {
+                def mods = runDirectory.get().dir('mods').asFile
+                project.sync { spec -> spec.from(smokeModJar.getOrElse(tasks.named('jar').get().archiveFile.get().asFile)); spec.into(mods) }
+                if (providers.gradleProperty('exportServerSmoke').isPresent()) {
+                    def output = rootProject.file(providers.gradleProperty('exportServerSmoke').get())
+                    output.parentFile.mkdirs()
+                    output.text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson([command: [javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(25) }.get().executablePath.asFile.absolutePath] + allJvmArgs + ['-cp', classpath.asPath, mainClass.get()] + args, workingDir: workingDir.absolutePath]))
+                    throw new StopExecutionException('Server launch exported')
+                }
+            }
+        }
+    }
+}

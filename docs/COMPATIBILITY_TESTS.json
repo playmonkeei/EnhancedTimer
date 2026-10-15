@@ -1,0 +1,603 @@
+{
+  "date": "2026-10-15",
+  "generated_at": "2026-10-15T10:23:04.996078+00:00",
+  "environment": "macOS ARM64, OpenJDK 25; isolated localhost servers, offline test accounts",
+  "artifacts_sha256": {
+    "bettertimer-26.2-0.2.0.jar": "fd89547e7a35625c80dcf93929edffbda7bc13c560599242ab22818e314e999c",
+    "bettertimer-26.3-0.2.0.jar": "9982db33c6fcb9a5cffded4eb1e234922c100253d67137b4d7670202cce15eda",
+    "bettertimer-26.1-0.2.0.jar": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+    "bettertimer-server-0.2.0.jar": "bec3ef1ad982de84b8067da0fea6dd3f0d408bdefbb881bd5eb1f0716e97d2ce"
+  },
+  "client_to_spigot": {
+    "26.1": {
+      "spigot": {
+        "status": "PASS",
+        "plugin_sha256": "bec3ef1ad982de84b8067da0fea6dd3f0d408bdefbb881bd5eb1f0716e97d2ce",
+        "server_sha256": "95f871fd6d055ba10b5a058768ddad43b0be0286480c8eba435c835c95d5f19c",
+        "version": "This server is running Spigot version 4632-Spigot-566f972-690a402 (MC: 26.1.2) (Implementing API version 26.1.2-R0.1-SNAPSHOT)\nChecking version, please wait...",
+        "commands_log": ".cache/matrix/26.1/spigot-commands.log"
+      },
+      "fabric": {
+        "status": "PASS",
+        "loader_version": "0.19.5",
+        "seconds": 40,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+        "log": ".cache/matrix/26.1/fabric-client.log",
+        "finished_at": "2026-10-15T10:07:06.859922+00:00"
+      },
+      "quilt": {
+        "status": "PASS",
+        "loader_version": "0.30.1",
+        "seconds": 41,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+        "log": ".cache/matrix/26.1/quilt-client.log",
+        "finished_at": "2026-10-15T10:07:47.610081+00:00"
+      },
+      "neoforge": {
+        "status": "PASS",
+        "loader_version": "26.1.0.19-beta",
+        "seconds": 41,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+        "log": ".cache/matrix/26.1/neoforge-client.log",
+        "finished_at": "2026-10-15T10:09:04.393052+00:00"
+      },
+      "forge": {
+        "status": "PASS",
+        "loader_version": "26.1-62.0.9",
+        "seconds": 36,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+        "log": ".cache/matrix/26.1/forge-client.log",
+        "finished_at": "2026-10-15T10:08:23.362150+00:00"
+      }
+    },
+    "26.1.1": {
+      "spigot": {
+        "status": "PASS",
+        "plugin_sha256": "bec3ef1ad982de84b8067da0fea6dd3f0d408bdefbb881bd5eb1f0716e97d2ce",
+        "server_sha256": "95f871fd6d055ba10b5a058768ddad43b0be0286480c8eba435c835c95d5f19c",
+        "version": "This server is running Spigot version 4632-Spigot-566f972-690a402 (MC: 26.1.2) (Implementing API version 26.1.2-R0.1-SNAPSHOT)\nChecking version, please wait...",
+        "commands_log": ".cache/matrix/26.1.1/spigot-commands.log"
+      },
+      "fabric": {
+        "status": "PASS",
+        "loader_version": "0.19.5",
+        "seconds": 38,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+        "log": ".cache/matrix/26.1.1/fabric-client.log",
+        "finished_at": "2026-10-15T10:09:53.314686+00:00"
+      },
+      "quilt": {
+        "status": "PASS",
+        "loader_version": "0.30.1",
+        "seconds": 40,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+        "log": ".cache/matrix/26.1.1/quilt-client.log",
+        "finished_at": "2026-10-15T10:10:33.107764+00:00"
+      },
+      "forge": {
+        "status": "PASS",
+        "loader_version": "26.1.1-63.0.2",
+        "seconds": 35,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+        "log": ".cache/matrix/26.1.1/forge-client.log",
+        "finished_at": "2026-10-15T10:11:08.386315+00:00"
+      },
+      "neoforge": {
+        "status": "PASS",
+        "loader_version": "26.1.1.15-beta",
+        "seconds": 40,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+        "log": ".cache/matrix/26.1.1/neoforge-client.log",
+        "finished_at": "2026-10-15T10:11:48.923934+00:00"
+      }
+    },
+    "26.1.2": {
+      "spigot": {
+        "status": "PASS",
+        "plugin_sha256": "bec3ef1ad982de84b8067da0fea6dd3f0d408bdefbb881bd5eb1f0716e97d2ce",
+        "server_sha256": "95f871fd6d055ba10b5a058768ddad43b0be0286480c8eba435c835c95d5f19c",
+        "version": "This server is running Spigot version 4632-Spigot-566f972-690a402 (MC: 26.1.2) (Implementing API version 26.1.2-R0.1-SNAPSHOT)\nChecking version, please wait...",
+        "commands_log": ".cache/matrix/26.1.2/spigot-commands.log"
+      },
+      "fabric": {
+        "status": "PASS",
+        "loader_version": "0.19.5",
+        "seconds": 39,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+        "log": ".cache/matrix/26.1.2/fabric-client.log",
+        "finished_at": "2026-10-15T10:04:17.326802+00:00"
+      },
+      "quilt": {
+        "status": "PASS",
+        "loader_version": "0.30.1",
+        "seconds": 40,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+        "log": ".cache/matrix/26.1.2/quilt-client.log",
+        "finished_at": "2026-10-15T10:04:57.865433+00:00"
+      },
+      "forge": {
+        "status": "PASS",
+        "loader_version": "26.1.2-64.1.5",
+        "seconds": 36,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+        "log": ".cache/matrix/26.1.2/forge-client.log",
+        "finished_at": "2026-10-15T10:05:33.301720+00:00"
+      },
+      "neoforge": {
+        "status": "PASS",
+        "loader_version": "26.1.2.121",
+        "seconds": 117,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+        "log": ".cache/matrix/26.1.2/neoforge-client.log",
+        "finished_at": "2026-10-15T10:07:31.064061+00:00"
+      }
+    },
+    "26.2": {
+      "spigot": {
+        "status": "PASS",
+        "plugin_sha256": "bec3ef1ad982de84b8067da0fea6dd3f0d408bdefbb881bd5eb1f0716e97d2ce",
+        "server_sha256": "675c766c5e4d13184a10316fbc89224de975b0c83d404a01462618a0742d406a",
+        "version": "This server is running Spigot version 4648-Spigot-8db49a2-96ae8cd (MC: 26.2) (Implementing API version 26.2-R0.1-SNAPSHOT)\nChecking version, please wait...",
+        "commands_log": ".cache/matrix/26.2/spigot-commands.log"
+      },
+      "fabric": {
+        "status": "PASS",
+        "loader_version": "0.19.5",
+        "seconds": 38,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "fd89547e7a35625c80dcf93929edffbda7bc13c560599242ab22818e314e999c",
+        "log": ".cache/matrix/26.2/fabric-client.log",
+        "finished_at": "2026-10-15T10:08:19.948130+00:00"
+      },
+      "quilt": {
+        "status": "PASS",
+        "loader_version": "0.30.1",
+        "seconds": 41,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "fd89547e7a35625c80dcf93929edffbda7bc13c560599242ab22818e314e999c",
+        "log": ".cache/matrix/26.2/quilt-client.log",
+        "finished_at": "2026-10-15T10:09:00.882657+00:00"
+      },
+      "forge": {
+        "status": "PASS",
+        "loader_version": "26.2-65.1.5",
+        "seconds": 37,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "fd89547e7a35625c80dcf93929edffbda7bc13c560599242ab22818e314e999c",
+        "log": ".cache/matrix/26.2/forge-client.log",
+        "finished_at": "2026-10-15T10:09:37.563760+00:00"
+      },
+      "neoforge": {
+        "status": "PASS",
+        "loader_version": "26.2.0.93",
+        "seconds": 127,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "fd89547e7a35625c80dcf93929edffbda7bc13c560599242ab22818e314e999c",
+        "log": ".cache/matrix/26.2/neoforge-client.log",
+        "finished_at": "2026-10-15T10:11:45.359571+00:00"
+      }
+    },
+    "26.3": {
+      "spigot": {
+        "status": "PASS",
+        "plugin_sha256": "bec3ef1ad982de84b8067da0fea6dd3f0d408bdefbb881bd5eb1f0716e97d2ce",
+        "server_sha256": "59f4a101e03012e5182e43c77f06679cdcb15d779c7c4ab6899200c567d79537",
+        "version": "This server is running Spigot version 4663-Spigot-bed90fc-c4db4c3 (MC: 26.3) (Implementing API version 26.3-R0.1-SNAPSHOT)\nChecking version, please wait...",
+        "commands_log": ".cache/matrix/26.3/spigot-commands.log"
+      },
+      "fabric": {
+        "status": "PASS",
+        "loader_version": "0.19.5",
+        "seconds": 39,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "9982db33c6fcb9a5cffded4eb1e234922c100253d67137b4d7670202cce15eda",
+        "log": ".cache/matrix/26.3/fabric-client.log",
+        "finished_at": "2026-10-15T10:12:39.239509+00:00"
+      },
+      "quilt": {
+        "status": "PASS",
+        "loader_version": "0.30.1",
+        "seconds": 41,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "9982db33c6fcb9a5cffded4eb1e234922c100253d67137b4d7670202cce15eda",
+        "log": ".cache/matrix/26.3/quilt-client.log",
+        "finished_at": "2026-10-15T10:13:20.763745+00:00"
+      },
+      "forge": {
+        "status": "PASS",
+        "loader_version": "26.3-66.0.12",
+        "seconds": 36,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "9982db33c6fcb9a5cffded4eb1e234922c100253d67137b4d7670202cce15eda",
+        "log": ".cache/matrix/26.3/forge-client.log",
+        "finished_at": "2026-10-15T10:13:56.654027+00:00"
+      },
+      "neoforge": {
+        "status": "PASS",
+        "loader_version": "26.3.0.83",
+        "seconds": 42,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "9982db33c6fcb9a5cffded4eb1e234922c100253d67137b4d7670202cce15eda",
+        "log": ".cache/matrix/26.3/neoforge-client.log",
+        "finished_at": "2026-10-15T10:14:38.904972+00:00"
+      }
+    }
+  },
+  "dedicated_mod_servers": {
+    "26.3/fabric": {
+      "status": "PASS",
+      "mod_sha256": "9982db33c6fcb9a5cffded4eb1e234922c100253d67137b4d7670202cce15eda",
+      "loader_version": "0.19.5",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=false",
+      "commands_log": ".cache/matrix/native-26.3-fabric/commands.log",
+      "client_log": ".cache/matrix/native-26.3-fabric/client.log",
+      "finished_at": "2026-10-15T10:05:13.952398+00:00"
+    },
+    "26.3/quilt": {
+      "status": "PASS",
+      "mod_sha256": "9982db33c6fcb9a5cffded4eb1e234922c100253d67137b4d7670202cce15eda",
+      "loader_version": "0.30.1",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=false",
+      "commands_log": ".cache/matrix/native-26.3-quilt/commands.log",
+      "client_log": ".cache/matrix/native-26.3-quilt/client.log",
+      "finished_at": "2026-10-15T10:06:03.154228+00:00"
+    },
+    "26.3/forge": {
+      "status": "PASS",
+      "mod_sha256": "9982db33c6fcb9a5cffded4eb1e234922c100253d67137b4d7670202cce15eda",
+      "loader_version": "26.3-66.0.12",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=false",
+      "commands_log": ".cache/matrix/native-26.3-forge/commands.log",
+      "client_log": ".cache/matrix/native-26.3-forge/client.log",
+      "finished_at": "2026-10-15T10:07:02.296659+00:00"
+    },
+    "26.3/neoforge": {
+      "status": "PASS",
+      "mod_sha256": "9982db33c6fcb9a5cffded4eb1e234922c100253d67137b4d7670202cce15eda",
+      "loader_version": "26.3.0.83",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=false",
+      "commands_log": ".cache/matrix/native-26.3-neoforge/commands.log",
+      "client_log": ".cache/matrix/native-26.3-neoforge/client.log",
+      "finished_at": "2026-10-15T10:07:51.331621+00:00"
+    },
+    "26.2/fabric": {
+      "status": "PASS",
+      "mod_sha256": "fd89547e7a35625c80dcf93929edffbda7bc13c560599242ab22818e314e999c",
+      "loader_version": "0.19.5",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=false",
+      "commands_log": ".cache/matrix/native-26.2-fabric/commands.log",
+      "client_log": ".cache/matrix/native-26.2-fabric/client.log",
+      "finished_at": "2026-10-15T10:08:39.571829+00:00"
+    },
+    "26.2/quilt": {
+      "status": "PASS",
+      "mod_sha256": "fd89547e7a35625c80dcf93929edffbda7bc13c560599242ab22818e314e999c",
+      "loader_version": "0.30.1",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=false",
+      "commands_log": ".cache/matrix/native-26.2-quilt/commands.log",
+      "client_log": ".cache/matrix/native-26.2-quilt/client.log",
+      "finished_at": "2026-10-15T10:09:28.750899+00:00"
+    },
+    "26.2/forge": {
+      "status": "PASS",
+      "mod_sha256": "fd89547e7a35625c80dcf93929edffbda7bc13c560599242ab22818e314e999c",
+      "loader_version": "26.2-65.1.5",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=false",
+      "commands_log": ".cache/matrix/native-26.2-forge/commands.log",
+      "client_log": ".cache/matrix/native-26.2-forge/client.log",
+      "finished_at": "2026-10-15T10:10:16.497744+00:00"
+    },
+    "26.2/neoforge": {
+      "status": "PASS",
+      "mod_sha256": "fd89547e7a35625c80dcf93929edffbda7bc13c560599242ab22818e314e999c",
+      "loader_version": "26.2.0.93",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=false",
+      "commands_log": ".cache/matrix/native-26.2-neoforge/commands.log",
+      "client_log": ".cache/matrix/native-26.2-neoforge/client.log",
+      "finished_at": "2026-10-15T10:11:12.611995+00:00"
+    },
+    "26.1.2/fabric": {
+      "status": "PASS",
+      "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+      "loader_version": "0.19.5",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=false",
+      "commands_log": ".cache/matrix/native-26.1.2-fabric/commands.log",
+      "client_log": ".cache/matrix/native-26.1.2-fabric/client.log",
+      "finished_at": "2026-10-15T10:12:03.265827+00:00"
+    },
+    "26.1.2/quilt": {
+      "status": "PASS",
+      "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+      "loader_version": "0.30.1",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=false",
+      "commands_log": ".cache/matrix/native-26.1.2-quilt/commands.log",
+      "client_log": ".cache/matrix/native-26.1.2-quilt/client.log",
+      "finished_at": "2026-10-15T10:12:56.728641+00:00"
+    },
+    "26.1.2/forge": {
+      "status": "PASS",
+      "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+      "loader_version": "26.1.2-64.1.5",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=false",
+      "commands_log": ".cache/matrix/native-26.1.2-forge/commands.log",
+      "client_log": ".cache/matrix/native-26.1.2-forge/client.log",
+      "finished_at": "2026-10-15T10:13:43.575161+00:00"
+    },
+    "26.1.2/neoforge": {
+      "status": "PASS",
+      "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+      "loader_version": "26.1.2.121",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=false",
+      "commands_log": ".cache/matrix/native-26.1.2-neoforge/commands.log",
+      "client_log": ".cache/matrix/native-26.1.2-neoforge/client.log",
+      "finished_at": "2026-10-15T10:14:30.710378+00:00"
+    },
+    "26.1.1/fabric": {
+      "status": "PASS",
+      "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+      "loader_version": "0.19.5",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=false",
+      "commands_log": ".cache/matrix/native-26.1.1-fabric/commands.log",
+      "client_log": ".cache/matrix/native-26.1.1-fabric/client.log",
+      "finished_at": "2026-10-15T10:15:22.856019+00:00"
+    },
+    "26.1.1/quilt": {
+      "status": "PASS",
+      "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+      "loader_version": "0.30.1",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=false",
+      "commands_log": ".cache/matrix/native-26.1.1-quilt/commands.log",
+      "client_log": ".cache/matrix/native-26.1.1-quilt/client.log",
+      "finished_at": "2026-10-15T10:16:13.885406+00:00"
+    },
+    "26.1.1/forge": {
+      "status": "PASS",
+      "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+      "loader_version": "26.1.1-63.0.2",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=false",
+      "commands_log": ".cache/matrix/native-26.1.1-forge/commands.log",
+      "client_log": ".cache/matrix/native-26.1.1-forge/client.log",
+      "finished_at": "2026-10-15T10:17:01.681230+00:00"
+    },
+    "26.1.1/neoforge": {
+      "status": "PASS",
+      "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+      "loader_version": "26.1.1.15-beta",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=false",
+      "commands_log": ".cache/matrix/native-26.1.1-neoforge/commands.log",
+      "client_log": ".cache/matrix/native-26.1.1-neoforge/client.log",
+      "finished_at": "2026-10-15T10:17:49.807941+00:00"
+    },
+    "26.1/fabric": {
+      "status": "PASS",
+      "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+      "loader_version": "0.19.5",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=false",
+      "commands_log": ".cache/matrix/native-26.1-fabric/commands.log",
+      "client_log": ".cache/matrix/native-26.1-fabric/client.log",
+      "finished_at": "2026-10-15T10:18:38.385085+00:00"
+    },
+    "26.1/quilt": {
+      "status": "PASS",
+      "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+      "loader_version": "0.30.1",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=false",
+      "commands_log": ".cache/matrix/native-26.1-quilt/commands.log",
+      "client_log": ".cache/matrix/native-26.1-quilt/client.log",
+      "finished_at": "2026-10-15T10:19:27.824507+00:00"
+    },
+    "26.1/forge": {
+      "status": "PASS",
+      "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+      "loader_version": "26.1-62.0.9",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=false",
+      "commands_log": ".cache/matrix/native-26.1-forge/commands.log",
+      "client_log": ".cache/matrix/native-26.1-forge/client.log",
+      "finished_at": "2026-10-15T10:20:14.815158+00:00"
+    },
+    "26.1/neoforge": {
+      "status": "PASS",
+      "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+      "loader_version": "26.1.0.19-beta",
+      "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=false",
+      "commands_log": ".cache/matrix/native-26.1-neoforge/commands.log",
+      "client_log": ".cache/matrix/native-26.1-neoforge/client.log",
+      "finished_at": "2026-10-15T10:21:00.936480+00:00"
+    }
+  },
+  "plugin_servers": {
+    "paper/26.1.1": {
+      "paper": {
+        "status": "PASS",
+        "plugin_sha256": "bec3ef1ad982de84b8067da0fea6dd3f0d408bdefbb881bd5eb1f0716e97d2ce",
+        "server_sha256": "43d08ed52c7af4e9f72769122501a5c15f99c7ace0c428a3eef040fd3f6fdbc5",
+        "version": "§f§oChecking version, please wait...",
+        "commands_log": ".cache/matrix/26.1.1-paper/paper-commands.log"
+      },
+      "fabric": {
+        "status": "PASS",
+        "loader_version": "0.19.5",
+        "seconds": 37,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+        "log": ".cache/matrix/26.1.1-paper/fabric-client.log",
+        "finished_at": "2026-10-15T10:12:50.658337+00:00"
+      }
+    },
+    "paper/26.1.2": {
+      "paper": {
+        "status": "PASS",
+        "plugin_sha256": "bec3ef1ad982de84b8067da0fea6dd3f0d408bdefbb881bd5eb1f0716e97d2ce",
+        "server_sha256": "1d70b1dab9cf4a6de615209a536f3a45a2186240253c428213ce2188ab95e5f7",
+        "version": "§f§oChecking version, please wait...",
+        "commands_log": ".cache/matrix/26.1.2-paper/paper-commands.log"
+      },
+      "fabric": {
+        "status": "PASS",
+        "loader_version": "0.19.5",
+        "seconds": 38,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+        "log": ".cache/matrix/26.1.2-paper/fabric-client.log",
+        "finished_at": "2026-10-15T10:13:53.734601+00:00"
+      }
+    },
+    "paper/26.2": {
+      "paper": {
+        "status": "PASS",
+        "plugin_sha256": "bec3ef1ad982de84b8067da0fea6dd3f0d408bdefbb881bd5eb1f0716e97d2ce",
+        "server_sha256": "3cce0a4922baf79bd8e1275ee5ff9f073f24675770e09b0d4be9442d513e7a6b",
+        "version": "§f§oChecking version, please wait...",
+        "commands_log": ".cache/matrix/26.2-paper/paper-commands.log"
+      },
+      "fabric": {
+        "status": "PASS",
+        "loader_version": "0.19.5",
+        "seconds": 38,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "fd89547e7a35625c80dcf93929edffbda7bc13c560599242ab22818e314e999c",
+        "log": ".cache/matrix/26.2-paper/fabric-client.log",
+        "finished_at": "2026-10-15T10:14:57.321398+00:00"
+      }
+    },
+    "paper/26.3": {
+      "paper": {
+        "status": "PASS",
+        "plugin_sha256": "bec3ef1ad982de84b8067da0fea6dd3f0d408bdefbb881bd5eb1f0716e97d2ce",
+        "server_sha256": "db0fd32588e732fd0de57cc95a2076624b0e73c1cb2dba87dc5f5f3340bcbb1b",
+        "version": "§f§oChecking version, please wait...",
+        "commands_log": ".cache/matrix/26.3-paper/paper-commands.log"
+      },
+      "fabric": {
+        "status": "PASS",
+        "loader_version": "0.19.5",
+        "seconds": 40,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "9982db33c6fcb9a5cffded4eb1e234922c100253d67137b4d7670202cce15eda",
+        "log": ".cache/matrix/26.3-paper/fabric-client.log",
+        "finished_at": "2026-10-15T10:20:19.008690+00:00"
+      }
+    },
+    "purpur/26.1.2": {
+      "purpur": {
+        "status": "PASS",
+        "plugin_sha256": "bec3ef1ad982de84b8067da0fea6dd3f0d408bdefbb881bd5eb1f0716e97d2ce",
+        "server_sha256": "d88e3826a7f3ad3cb4b07be02fc732ba732bf1a1b113d96b605e9f8d1d119608",
+        "version": "§f§oChecking version, please wait...",
+        "commands_log": ".cache/matrix/26.1.2-purpur/purpur-commands.log"
+      },
+      "fabric": {
+        "status": "PASS",
+        "loader_version": "0.19.5",
+        "seconds": 39,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+        "log": ".cache/matrix/26.1.2-purpur/fabric-client.log",
+        "finished_at": "2026-10-15T10:18:08.005115+00:00"
+      }
+    },
+    "purpur/26.2": {
+      "purpur": {
+        "status": "PASS",
+        "plugin_sha256": "bec3ef1ad982de84b8067da0fea6dd3f0d408bdefbb881bd5eb1f0716e97d2ce",
+        "server_sha256": "41f7c0535c1cec47ede48d25c8d9bd7f053d4dc44f87293e5a007314dbcfc32c",
+        "version": "§f§oChecking version, please wait...",
+        "commands_log": ".cache/matrix/26.2-purpur/purpur-commands.log"
+      },
+      "fabric": {
+        "status": "PASS",
+        "loader_version": "0.19.5",
+        "seconds": 38,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "fd89547e7a35625c80dcf93929edffbda7bc13c560599242ab22818e314e999c",
+        "log": ".cache/matrix/26.2-purpur/fabric-client.log",
+        "finished_at": "2026-10-15T10:19:11.514302+00:00"
+      }
+    },
+    "purpur/26.3": {
+      "purpur": {
+        "status": "PASS",
+        "plugin_sha256": "bec3ef1ad982de84b8067da0fea6dd3f0d408bdefbb881bd5eb1f0716e97d2ce",
+        "server_sha256": "0677c1febecfbc2e5b0a7f76abd647b70a1f38d3cbdf3dd6a82e401b4262a598",
+        "version": "§f§oChecking version, please wait...",
+        "commands_log": ".cache/matrix/26.3-purpur/purpur-commands.log"
+      },
+      "fabric": {
+        "status": "PASS",
+        "loader_version": "0.19.5",
+        "seconds": 38,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "9982db33c6fcb9a5cffded4eb1e234922c100253d67137b4d7670202cce15eda",
+        "log": ".cache/matrix/26.3-purpur/fabric-client.log",
+        "finished_at": "2026-10-15T10:21:31.604141+00:00"
+      }
+    },
+    "folia/26.1.2": {
+      "folia": {
+        "status": "PASS",
+        "plugin_sha256": "bec3ef1ad982de84b8067da0fea6dd3f0d408bdefbb881bd5eb1f0716e97d2ce",
+        "server_sha256": "607afd1c3320008e1ffd2eaee6780ace4419d5f8c527b75e79f259be79ebf57b",
+        "version": "§f§oChecking version, please wait...",
+        "commands_log": ".cache/matrix/26.1.2-folia/folia-commands.log"
+      },
+      "fabric": {
+        "status": "PASS",
+        "loader_version": "0.19.5",
+        "seconds": 38,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "7ead71a4f7adb58afbd2fcf8fa4b128e5ed6642190a3b654e4e5935e33bace12",
+        "log": ".cache/matrix/26.1.2-folia/fabric-client.log",
+        "finished_at": "2026-10-15T10:15:59.668744+00:00"
+      }
+    },
+    "folia/26.2": {
+      "folia": {
+        "status": "PASS",
+        "plugin_sha256": "bec3ef1ad982de84b8067da0fea6dd3f0d408bdefbb881bd5eb1f0716e97d2ce",
+        "server_sha256": "128a634192261cd38bb4a5dc54075018a0f896fd6c6f529e37dca6e99e32b3b3",
+        "version": "§f§oChecking version, please wait...",
+        "commands_log": ".cache/matrix/26.2-folia/folia-commands.log"
+      },
+      "fabric": {
+        "status": "PASS",
+        "loader_version": "0.19.5",
+        "seconds": 40,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "fd89547e7a35625c80dcf93929edffbda7bc13c560599242ab22818e314e999c",
+        "log": ".cache/matrix/26.2-folia/fabric-client.log",
+        "finished_at": "2026-10-15T10:17:02.426081+00:00"
+      }
+    },
+    "folia/26.3": {
+      "folia": {
+        "status": "PASS",
+        "plugin_sha256": "bec3ef1ad982de84b8067da0fea6dd3f0d408bdefbb881bd5eb1f0716e97d2ce",
+        "server_sha256": "0c4cc7dd82c40bd1effa8a9c4cacfad55d41b7dc38377900957c961c2952c022",
+        "version": "§f§oChecking version, please wait...",
+        "commands_log": ".cache/matrix/26.3-folia/folia-commands.log"
+      },
+      "fabric": {
+        "status": "PASS",
+        "loader_version": "0.19.5",
+        "seconds": 37,
+        "detail": "PASS: timer synchronization, 13 rendered configuration/editor screens; server inventory menu=true",
+        "mod_sha256": "9982db33c6fcb9a5cffded4eb1e234922c100253d67137b4d7670202cce15eda",
+        "log": ".cache/matrix/26.3-folia/fabric-client.log",
+        "finished_at": "2026-10-15T10:22:31.926282+00:00"
+      }
+    }
+  },
+  "successful_client_server_scenarios": 50
+}

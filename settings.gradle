@@ -1,0 +1,11 @@
+pluginManagement {
+    repositories {
+        maven { url = 'https://maven.fabricmc.net/' }
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+rootProject.name = 'EnhancedTimer'
+include 'core', 'richtext', 'client-26.1', 'client-26.2', 'client-26.3', 'paper'
+['26.1', '26.2', '26.3'].each { v -> project(":client-${v}").projectDir = file("versions/${v}") }
+

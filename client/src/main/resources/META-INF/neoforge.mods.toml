@@ -1,0 +1,20 @@
+modLoader="lowcodefml"
+loaderVersion="[1,)"
+license="MIT"
+issueTrackerURL="https://github.com/playmonkeei/EnhancedTimer/issues"
+[[mods]]
+modId="enhancedtimer"
+version="${version}"
+displayName="Enhanced Timer"
+logoFile="assets/enhancedtimer/icon.png"
+authors="playmonkeei"
+displayURL="https://github.com/playmonkeei/EnhancedTimer"
+description='''Client timer, countdown and draggable HUD. Press B to open EnhancedTimer.'''
+[[mixins]]
+config="enhancedtimer.mixins.json"
+[[dependencies.enhancedtimer]]
+modId="minecraft"
+type="required"
+versionRange="${minecraftRange}"
+side="BOTH"
+

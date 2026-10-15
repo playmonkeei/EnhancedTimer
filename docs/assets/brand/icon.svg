@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="Enhanced Timer icon">
+  <defs><linearGradient id="mint" x2="1" y2="1"><stop stop-color="#b1f8ba"/><stop offset="1" stop-color="#50dbc9"/></linearGradient></defs>
+  <rect width="256" height="256" rx="48" fill="#101e2b"/>
+  <path d="M102 26H154V42H138V60H118V42H102Z M190 66L204 52L218 66L204 80Z" fill="url(#mint)"/>
+  <path d="M82 62H174V78H190V94H206V186H190V202H174V218H82V202H66V186H50V94H66V78H82Z" fill="#19353b" stroke="url(#mint)" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M128 86V140L159 160" fill="none" stroke="#effff4" stroke-width="13"/>
+  <path d="M128 184V197M72 140H85M171 140H184" stroke="#6cd9bc" stroke-width="6"/>
+</svg>

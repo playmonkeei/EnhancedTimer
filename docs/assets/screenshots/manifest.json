@@ -1,0 +1,41 @@
+{
+  "project": "Enhanced Timer",
+  "captured_on": "2026-10-15",
+  "images": [
+    {
+      "file": "gameplay.png",
+      "capture": "Minecraft F2, unchanged PNG",
+      "minecraft": "26.3",
+      "loader": "Fabric 0.19.5",
+      "sha256": "d239d08bfbe462d7658e9cff6fceed4f13d89381af2dd4328cc68d272294e826"
+    },
+    {
+      "file": "menu.png",
+      "capture": "Minecraft F2, unchanged PNG",
+      "minecraft": "26.3",
+      "loader": "Fabric 0.19.5",
+      "sha256": "6884e3193e30c48ba46650140b5429d27e4810057d08d5acbdfe68cf35a5aec8"
+    },
+    {
+      "file": "rainbow.png",
+      "capture": "Minecraft F2, unchanged PNG",
+      "minecraft": "26.3",
+      "loader": "Fabric 0.19.5",
+      "sha256": "ab7498b386fcad4713f3c0be8d8169cac0157a0fa6da16de61d6b0a96603ea39"
+    },
+    {
+      "file": "editor.png",
+      "capture": "Minecraft F2, unchanged PNG",
+      "minecraft": "26.3",
+      "loader": "Fabric 0.19.5",
+      "sha256": "57622a281f27bf202765a992a1d92c465c2483ce4fc30ae83eca736a17d22abb"
+    },
+    {
+      "file": "countdown.png",
+      "capture": "Minecraft F2, unchanged PNG",
+      "minecraft": "26.3",
+      "loader": "Fabric 0.19.5",
+      "sha256": "ef9769edcf82a8812fdfb69673f9e8d6cffa2c9e14e343e35c91fdfde025ed70"
+    }
+  ]
+}
